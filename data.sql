@@ -13,4 +13,4 @@ INSERT INTO connexion VALUES (10, '2017-03-03', '08:47:05', 903);
 INSERT INTO connexion VALUES (11, '2017-03-03', '09:39:05', 903);
 INSERT INTO connexion VALUES (12, '2017-03-03', '10:39:05', 902);
 
-SELECT * FROM connexion WHERE time_con BETWEEN '08:00:00' AND '10:00:00';
+SELECT uid FROM connexion WHERE time_con BETWEEN '08:00:00' AND '10:00:00';
