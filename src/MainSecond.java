@@ -4,6 +4,7 @@ import org.joda.time.LocalTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.PreparedStatement;
@@ -49,10 +50,17 @@ public class MainSecond {
             i++;
         }
 
+        File csvFile = new File(fileName);
+
+        /* Check if the file exists, if yes then remove it to avoid multiple append */
+        if (csvFile.exists()) {
+            csvFile.delete();
+        }
+
         /* Create file with append parameter setted to true */
         FileWriter mFileWriter = null;
         try {
-            mFileWriter = new FileWriter(fileName, true);
+            mFileWriter = new FileWriter(csvFile, true);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -93,6 +101,10 @@ public class MainSecond {
 
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if (mFileWriter != null) {
+                mFileWriter.close();
+            }
         }
 
         DBConnection.closeConnection();
