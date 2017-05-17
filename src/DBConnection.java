@@ -27,7 +27,6 @@ public class DBConnection {
         String remoteHost = "127.0.0.1";
         int remotePort = 3306;
         String localSSHUrl = "localhost";
-        /***************/
         String driverName = "com.mysql.jdbc.Driver";
 
         try {
@@ -35,7 +34,6 @@ public class DBConnection {
             JSch jsch = new JSch();
             session = jsch.getSession(sshuser, sshHost, 22);
             session.setPassword("centos");
-            //jsch.addIdentity(SshKeyFilepath);
             config.put("StrictHostKeyChecking", "no");
             config.put("ConnectionAttempts", "3");
             session.setConfig(config);
@@ -107,6 +105,4 @@ public class DBConnection {
         closeDBConnect();
         closeSSH();
     }
-
-
 }
